@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.27)
-project(Activities)
+project(Notepad)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_AUTOMOC ON)
@@ -14,8 +14,12 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(Activities main.cpp)
-target_link_libraries(Activities
+add_executable(Notepad main.cpp
+        Note.h
+        Collection.h
+        Observer.h
+        Subject.h)
+target_link_libraries(Notepad
         Qt::Core
         Qt::Gui
         Qt::Widgets
