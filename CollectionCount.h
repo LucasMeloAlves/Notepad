@@ -9,30 +9,23 @@
 #include <QList>
 #include "Observer.h"
 #include "Collection.h"
+#include <iostream>
 
 class CollectionCount : public Observer {
 Q_OBJECT
 
 public:
-    CollectionCount(Collection* collection);
-    void addCollection(Collection* collection){
-        collections.append(collection);
-        collection->addObserver(this);
-    }
+    CollectionCount(){}
 
-    void removeCollection(Collection* collection){
-        collections.removeOne(collection);
-        collection->removeObserver(this);
+    int draw(const Collection& collection) const{
+        return collection.getNumNotes();
     }
 
 public slots:
-    void update() override{
-
+    void update(int count) override{
+        std::cout << count << std::endl;
     }
 
-private:
-
-    QList<Collection*> collections;
 };
 
 

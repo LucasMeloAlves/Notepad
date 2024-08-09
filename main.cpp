@@ -1,7 +1,9 @@
 #include <QApplication>
 #include <QWidget>
+#include <QObject>
 #include <QVBoxLayout>
 #include <QListWidget>
+#include <QDebug>
 #include "Note.h"
 #include "Collection.h"
 #include "Observer.h"
@@ -15,12 +17,6 @@ public:
 
         noteListWidget = new QListWidget();
         layout->addWidget(noteListWidget);
-
-
-
-
-
-
     }
 
 private:
@@ -31,12 +27,13 @@ private:
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-
     MainWindow mainWindow;
+    Observer* obs;
+    Collection* coll;
+
     mainWindow.setWindowTitle("Note Viewer");
     mainWindow.resize(400, 300);
     mainWindow.show();
 
     return app.exec();
 }
-
