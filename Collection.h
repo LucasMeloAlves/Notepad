@@ -24,12 +24,12 @@ public:
 
     void addNote(Note *note) {
         notes.append(note);//aggiunge elemento in coda
-        notify();
+                emit notify();
     }
 
     void removeNote(Note *note) {
         notes.removeOne(note);
-        notify();
+        emit notify();
     }
 
     QString getName() const {
@@ -46,17 +46,22 @@ public:
 
     void addObserver(Observer *observer) override {
         observers.append(observer);
+        //sistema il connect
+        QObject::connect(this, &Collection::noteCountChanged, observer, &Observer::update);
+
     }
 
     void removeObserver(Observer *observer) override {
         observers.removeOne(observer);
+        QObject::disconnect(this, &Collection::noteCountChanged, observer, &Observer::update);
     }
-
-
+    int getNumNotes() const{
+        return notes.size();
+    }
     void notify() override {
-        for (auto observer: observers) {
-            observer->update();
+        emit noteCountChanged(notes.size());
         }
-    }
+signals:
+    void noteCountChanged(int count);
 };
 #endif //NOTEPAD_COLLECTION_H

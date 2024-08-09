@@ -4,11 +4,11 @@
 
 #ifndef NOTEPAD_SUBJECT_H
 #define NOTEPAD_SUBJECT_H
-#include <QWidget>
+#include <QObject>
 #include <QList>
 #include "Observer.h"
 
-class Subject : public QWidget {
+class Subject : public QObject {
 Q_OBJECT
 
 public:
