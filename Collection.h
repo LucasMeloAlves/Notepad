@@ -9,36 +9,54 @@
 #include <QString>
 #include <QList>
 #include "Note.h"
+#include "Subject.h"
+#include "Observer.h"
 
-class Collection: public QObject
-{
-    Q_OBJECT
+class Collection: public Subject {
+Q_OBJECT
+
 private:
     QString name;
-    QList<Note*> notes;
+    QList<Note *> notes;
+    QList<Observer *> observers;
 public:
     Collection(QString name);
 
-    void addNote(Note* note){
-        notes.append(note);
+    void addNote(Note *note) {
+        notes.append(note);//aggiunge elemento in coda
+        notify();
     }
-    void removeNote(Note* note){
+
+    void removeNote(Note *note) {
         notes.removeOne(note);
+        notify();
     }
-    QString getName() const{
+
+    QString getName() const {
         return name;
     }
-    QList<Note*> getNotes() const{
+
+    QList<Note *> getNotes() const {
         return notes;
     }
-    void setName(QString name){
+
+    void setName(QString name) {
         this->name = name;
     }
-    void add(Note* note){
-        notes.append(note);
+
+    void addObserver(Observer *observer) override {
+        observers.append(observer);
     }
-    void remove(Note* note){
-        notes.removeOne(note);
+
+    void removeObserver(Observer *observer) override {
+        observers.removeOne(observer);
+    }
+
+
+    void notify() override {
+        for (auto observer: observers) {
+            observer->update();
+        }
     }
 };
 #endif //NOTEPAD_COLLECTION_H

@@ -1,10 +1,9 @@
 
 #ifndef ACTIVITIES_NOTE_H
 #define ACTIVITIES_NOTE_H
-#include <QObject>
+#include <QWidget>
 #include <QString>
-class Note: public QObject
-{
+class Note: public QWidget{
     Q_OBJECT
 private:
     QString title;
