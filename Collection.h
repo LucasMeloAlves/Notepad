@@ -20,7 +20,9 @@ private:
     QList<Note *> notes;
     QList<Observer *> observers;
 public:
-    Collection(QString name);
+    Collection(QString name){
+        this->name = name;
+    }
 
     void addNote(Note *note) {
         notes.append(note);//aggiunge elemento in coda
@@ -51,7 +53,6 @@ public:
     void removeObserver(Observer *observer) override {
         observers.removeOne(observer);
     }
-
 
     void notify() override {
         for (auto observer: observers) {

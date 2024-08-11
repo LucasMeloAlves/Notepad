@@ -10,7 +10,10 @@ private:
     QString text;
     bool important;
 public:
-    Note(QString title, QString text, bool important = false);
+    Note(QString title, QString text, bool important = false){
+        this->title = title;
+        this->text = text;
+    }
     QString getTitle() const{
         return title;
     }
