@@ -19,7 +19,8 @@ add_executable(Notepad main.cpp
         Collection.h
         Observer.h
         Subject.h
-        CollectionCount.h)
+        CollectionCount.h
+        MainWindow.h)
 target_link_libraries(Notepad
         Qt::Core
         Qt::Gui

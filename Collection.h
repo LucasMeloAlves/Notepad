@@ -55,7 +55,7 @@ public:
 
     void notify() override {
         for (auto observer: observers) {
-            observer->update();
+            observer->update(notes.size());
         }
     }
 };

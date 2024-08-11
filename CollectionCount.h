@@ -15,24 +15,9 @@ Q_OBJECT
 
 public:
     CollectionCount(Collection* collection);
-    void addCollection(Collection* collection){
-        collections.append(collection);
-        collection->addObserver(this);
-    }
-
-    void removeCollection(Collection* collection){
-        collections.removeOne(collection);
-        collection->removeObserver(this);
-    }
 
 public slots:
-    void update() override{
-
-    }
-
-private:
-
-    QList<Collection*> collections;
+    void update(int count) override{}
 };
 
 
