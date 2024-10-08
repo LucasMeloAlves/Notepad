@@ -5,12 +5,12 @@
 #ifndef NOTEPAD_OBSERVER_H
 #define NOTEPAD_OBSERVER_H
 
-#include <QObject>
-#include "Collection.h"
 
-class Observer : public QObject {
-Q_OBJECT
-public slots:
+
+class Observer: public QObject{
+    Q_OBJECT
+public:
+    virtual ~Observer() = default;
     virtual void update(int count) = 0;
 };
 #endif //NOTEPAD_OBSERVER_H

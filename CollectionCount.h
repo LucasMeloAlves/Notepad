@@ -15,9 +15,9 @@ Q_OBJECT
 
 public:
     CollectionCount(Collection* collection);
-
+    ~CollectionCount() override;
 public slots:
-    void update(int count) override{}
+    void update(int count) override;
 };
 
 

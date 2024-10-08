@@ -16,11 +16,18 @@ find_package(Qt6 COMPONENTS
 
 add_executable(Notepad main.cpp
         Note.h
+        Note.cpp
         Collection.h
         Observer.h
         Subject.h
         CollectionCount.h
-        MainWindow.h)
+        CollectionCount.cpp
+        MainWindow.h
+        MainWindow.cpp
+        Controller.h
+        Controller.cpp
+        Collection.cpp
+        )
 target_link_libraries(Notepad
         Qt::Core
         Qt::Gui

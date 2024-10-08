@@ -10,25 +10,12 @@ private:
     QString text;
     bool important;
 public:
-    Note(QString title, QString text, bool important = false){
-        this->title = title;
-        this->text = text;
-    }
-    QString getTitle() const{
-        return title;
-    }
-    QString getText() const{
-        return text;
-    }
-    bool isImportant() const{
-        return important;
-    }
-    void setTitle(QString title){
-        this->title = title;
-    }
-    void setText(QString text){
-        this->text = text;
-    }
+    Note(QString title, QString text, bool important = false);
+    QString getTitle() const;
+    QString getText() const;
+    bool isImportant() const;
+    void setTitle(QString title);
+    void setText(QString text);
 
 };
 #endif //ACTIVITIES_NOTE_H
