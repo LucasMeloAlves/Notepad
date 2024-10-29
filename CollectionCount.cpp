@@ -5,4 +5,4 @@
 CollectionCount::CollectionCount(Collection *collection) {}
 
 CollectionCount::~CollectionCount() {};
-void CollectionCount::update(int count) {}
+void CollectionCount::update() {}

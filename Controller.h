@@ -1,20 +1,22 @@
-//
-// Created by lucas on 07/10/24.
-//
+// Controller.h
 
 #ifndef NOTEPAD_CONTROLLER_H
 #define NOTEPAD_CONTROLLER_H
+
+#include <QList>
 #include "Collection.h"
+#include "Observer.h"
 
-class Controller {
+class Controller : public Observer {
 public:
-    Controller(QList<Collection*> &collections);
-
-    void addNoteToCollection(const QString &title, const QString &text, Collection *collection);
+    explicit Controller(QList<Collection*> collections);
+    void addCollection(Collection *collection);
+    void addNoteToCollection(Note *note, Collection *collection);
+    QList<Collection*> getCollections() const;
+    void update() override;
 
 private:
-    QList<Collection*> &collections;
+    QList<Collection*> collections;
 };
-
 
 #endif //NOTEPAD_CONTROLLER_H

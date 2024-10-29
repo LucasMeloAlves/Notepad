@@ -1,11 +1,23 @@
-//
-// Created by lucas on 07/10/24.
-//
+// Controller.cpp
 
 #include "Controller.h"
-Controller::Controller(QList<Collection*> &collections) : collections(collections) {}
 
-void Controller::addNoteToCollection(const QString &title, const QString &text, Collection *collection) {
-    Note *note = new Note(title, text);
+Controller::Controller(QList<Collection*> collections) : collections(collections) {}
+
+void Controller::addCollection(Collection *collection) {
+    collections.append(collection);
+    update();
+}
+
+void Controller::addNoteToCollection(Note *note, Collection *collection) {
     collection->addNote(note);
+    update();
+}
+
+QList<Collection*> Controller::getCollections() const {
+    return collections;
+}
+
+void Controller::update() {
+    // Implementa il comportamento di aggiornamento
 }

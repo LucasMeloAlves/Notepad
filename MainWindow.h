@@ -1,6 +1,4 @@
-//
-// Created by lucas on 09/08/24.
-//
+// MainWindow.h
 
 #ifndef NOTEPAD_MAINWINDOW_H
 #define NOTEPAD_MAINWINDOW_H
@@ -12,34 +10,36 @@
 #include <QListWidget>
 #include "Note.h"
 #include "Collection.h"
-#include "Observer.h"
 #include <QPushButton>
 #include <QComboBox>
 #include <QLineEdit>
-#include "Observer.h"
+#include "Controller.h"
 
-class MainWindow : public QWidget{
+class MainWindow : public QWidget {
 Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    void addCollection(Collection *collection);
+    explicit MainWindow(Controller *controller, QWidget *parent = nullptr);
+    void HomePage();
     void addNoteToCollection(Note *note, Collection *collection);
-
 
 private slots:
     void showNoteFields();
     void saveNote();
     void onCollectionSelected(int index);
+    void addCollection();
+    void showCollectionFields();
 
 private:
-        QList<Collection*> collections;
-        QPushButton *newNoteButton;
-        QComboBox *comboBox;
-        QLineEdit *titleEdit;
-        QLineEdit *textEdit;
-        QPushButton *saveButton;
-        QListWidget *noteList;
-
+    Controller *controller;
+    QPushButton *newNoteButton;
+    QComboBox *comboBox;
+    QLineEdit *titleEdit;
+    QLineEdit *textEdit;
+    QPushButton *saveButton;
+    QListWidget *noteList;
+    QPushButton* newCollectionButton;
+    QPushButton* saveCollectionButton;
 };
+
 #endif //NOTEPAD_MAINWINDOW_H

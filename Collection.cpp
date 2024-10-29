@@ -36,6 +36,6 @@ observers.removeOne(observer);
 
 void Collection::notify(){
 for (auto observer: observers) {
-observer->update(notes.size());
+observer->update();
 }
 }

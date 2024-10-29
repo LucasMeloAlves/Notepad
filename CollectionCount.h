@@ -17,7 +17,7 @@ public:
     CollectionCount(Collection* collection);
     ~CollectionCount() override;
 public slots:
-    void update(int count) override;
+    void update() override;
 };
 
 
