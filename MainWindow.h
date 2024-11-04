@@ -22,7 +22,7 @@ public:
     explicit MainWindow(Controller *controller, QWidget *parent = nullptr);
     void HomePage();
     void addNoteToCollection(Note *note, Collection *collection);
-
+    void initializeDefaultCollection();
 private slots:
     void showNoteFields();
     void saveNote();
@@ -38,8 +38,8 @@ private:
     QLineEdit *textEdit;
     QPushButton *saveButton;
     QListWidget *noteList;
-    QPushButton* newCollectionButton;
-    QPushButton* saveCollectionButton;
+    QPushButton *newCollectionButton;
+    QPushButton *saveCollectionButton;
 };
 
 #endif //NOTEPAD_MAINWINDOW_H

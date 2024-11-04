@@ -6,18 +6,28 @@ Controller::Controller(QList<Collection*> collections) : collections(collections
 
 void Controller::addCollection(Collection *collection) {
     collections.append(collection);
-    update();
+    notify();
 }
 
 void Controller::addNoteToCollection(Note *note, Collection *collection) {
     collection->addNote(note);
-    update();
+    notify();
 }
 
+void Controller::addObserver(Observer *observer) {
+    observers.append(observer);
+}
+
+void Controller::removeObserver(Observer *observer) {
+    observers.removeOne(observer);
+}
+
+void Controller::notify() {
+    for (Observer *observer : observers) {
+        observer->update();
+    }
+}
 QList<Collection*> Controller::getCollections() const {
     return collections;
 }
 
-void Controller::update() {
-    // Implementa il comportamento di aggiornamento
-}

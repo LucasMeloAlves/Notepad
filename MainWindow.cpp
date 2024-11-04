@@ -32,10 +32,14 @@ MainWindow::MainWindow(Controller *controller, QWidget *parent) : QWidget(parent
     QObject::connect(saveCollectionButton, &QPushButton::clicked, this, &MainWindow::addCollection);
     QObject::connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &MainWindow::onCollectionSelected);
 
+    initializeDefaultCollection(); // Initialize the default collection
     update();
 }
 
-
+void MainWindow::initializeDefaultCollection() {
+    Collection *defaultCollection = new Collection("recently added");
+    controller->addCollection(defaultCollection);
+}
 
 void MainWindow::addCollection() {
     QString title = titleEdit->text();
